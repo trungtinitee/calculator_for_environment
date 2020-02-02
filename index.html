@@ -1,0 +1,44 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="stylesheet" href="./css/login.css">
+</head>
+
+<body>
+    <form class="mid_box" action="" method="" id="formLogin">
+        <img src="./images/ecology.png" alt="logo_login">
+        <h1>Login</h1>
+        <input type="text" name="" placeholder="Username" id="inputUserName">
+        <input type="password" name="" placeholder="Password" id="inputPassword">
+        <div class="show_hide">
+            <input type="checkbox" onclick="Show_hide_password()"> <span>Show/Hide password</span>
+        </div>
+        <input type="submit" name="" value="Let's go" onclick="checkUsernamePassword()">
+    </form>
+</body>
+<script>
+    function Show_hide_password() {
+        var x = document.getElementById("inputPassword");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+
+    function checkUsernamePassword() {
+        var userName = document.getElementById("inputUserName").value;
+        var password = document.getElementById("inputPassword").value;
+        if (userName === "tin" && password === "tin") {
+            document.getElementById("formLogin").action = "https://flatuicolors.com/palette/defo"
+        } else {
+            alert("Username or password is not correct!")
+        }
+    }
+</script>
+
+</html>
