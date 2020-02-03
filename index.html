@@ -14,10 +14,11 @@
         <h1>Login</h1>
         <input type="text" name="" placeholder="Username" id="inputUserName">
         <input type="password" name="" placeholder="Password" id="inputPassword">
-        <div class="show_hide">
-            <input type="checkbox" onclick="Show_hide_password()"> <span>Show/Hide password</span>
-        </div>
-        <input type="submit" name="" value="Let's go" onclick="checkUsernamePassword()">
+        <label class="container">Show/Hide
+            <input type="checkbox" onclick="Show_hide_password()">
+            <span class="checkmark"></span>
+        </label>
+        <input type="submit" name="" value="Let's go!" onclick="checkUsernamePassword()">
     </form>
 </body>
 <script>
@@ -34,7 +35,7 @@
         var userName = document.getElementById("inputUserName").value;
         var password = document.getElementById("inputPassword").value;
         if (userName === "tin" && password === "tin") {
-            document.getElementById("formLogin").action = "https://flatuicolors.com/palette/defo"
+            document.getElementById("formLogin").action = "./htmls/home_page.html"
         } else {
             alert("Username or password is not correct!")
         }
