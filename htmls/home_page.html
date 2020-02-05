@@ -94,6 +94,19 @@
     </footer>
     <script src="../js/amination.js"></script>
     <script>
+        document.getElementById("check").addEventListener("click", ChangeOverFlowBody);
+        var checked = false;
+
+        function ChangeOverFlowBody() {
+            if (checked === false) {
+                document.getElementsByTagName("body")[0].style.overflow = "hidden";
+                checked = true;
+            } else {
+                document.getElementsByTagName("body")[0].style.overflow = "auto";
+                checked = false;
+            }
+        }
+
         function AppearBackgroundAndForm() {
             document.getElementById("background_form_appear_id").setAttribute("class", "background_form_appear_in");
             document.getElementById("form_appear_id").setAttribute("class", "form_appear_in");
@@ -102,8 +115,6 @@
         function HiddenForm() {
             document.getElementById("background_form_appear_id").removeAttribute("class");
             document.getElementById("form_appear_id").removeAttribute("class");
-
-
         }
     </script>
 </body>
