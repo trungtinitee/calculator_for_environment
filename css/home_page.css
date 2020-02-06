@@ -203,42 +203,6 @@
     .items:active {
         transform: translate(-3px, -3px);
     }
-    /*
-    This is code for form appear when click on any ticket
-    */
-    
-    .background_form_appear_in {
-        transition: all .5s;
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: #95a5a6;
-        opacity: 0;
-        z-index: 100;
-        visibility: hidden;
-    }
-    
-    .form_appear_in {
-        transition: all .6s;
-        box-shadow: 0px 0px 25px 10px #34495e;
-        background: #2ecc71;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 85%;
-        height: 90%;
-        border-radius: 10px;
-        border: 10px solid #27ae60;
-        display: block;
-        z-index: 200;
-        overflow: auto;
-        opacity: 0;
-        visibility: hidden;
-    }
     
     @media (max-width: 700px) {
         .items-container img {
@@ -248,11 +212,124 @@
             font-size: 50px;
         }
     }
+    /*
+    This is code for form appear when click on any ticket
+    */
+    
+    .background_form_appear_in {
+        transition: all .5s;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #95a5a6;
+        z-index: 100;
+        opacity: 0;
+        visibility: hidden;
+    }
+    
+    .form_appear_in {
+        transition: all .6s;
+        box-shadow: 0px 0px 25px 10px #34495e;
+        background: #2ecc71;
+        position: fixed;
+        display: block;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 85%;
+        height: 90%;
+        border-radius: 10px;
+        border: 10px solid #27ae60;
+        z-index: 200;
+        opacity: 0;
+        visibility: hidden;
+    }
+    
+    .header_form_appear {
+        background: #ecf0f1;
+        border: 2px solid #27ae60;
+        border-radius: 5px;
+        margin: 15px 15px;
+        padding: 15px 30px;
+        display: flex;
+        justify-items: center;
+        justify-content: space-between;
+    }
+    
+    .header_form_appear i {
+        font-size: 35px;
+        color: red;
+        margin: auto 0;
+    }
+    
+    .header_form_appear i:hover,
+    .header_form_appear i:active {
+        transition: all .5s;
+        transform: scale(1.2);
+    }
+    
+    .header_form_appear h1 {
+        margin: auto 25px;
+    }
+    
+    .main_form_appear {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: calc(100% - 200px);
+        overflow: auto;
+        background: #ecf0f1;
+    }
+    
+    .footer_form_appear {
+        background: #ecf0f1;
+        padding: 15px 0;
+        display: block;
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+    }
+    
+    .logo_form_appear {
+        max-width: 50px;
+    }
+    
+    @media (max-width: 830px) {
+        .header_form_appear h1 {
+            font-size: 25px;
+        }
+        .header_form_appear i {
+            font-size: 30px;
+        }
+        .header_form_appear {
+            margin: 10px 10px;
+            padding: 10px 20px;
+        }
+        .main_form_appear {
+            height: calc(100% - 150px);
+        }
+        .form_appear_in {
+            width: 100%;
+            height: 100%;
+        }
+        .footer_form_appear {
+            padding: 0;
+        }
+        .logo_form_appear {
+            max-width: 50px;
+            margin-top: 10px;
+        }
+    }
     /* This is Footer code */
     
     footer {
         background: #ecf0f1;
-        padding: 50 0px;
+        padding: 50px 0px;
     }
     
     .footer_container {
