@@ -283,6 +283,55 @@
         height: calc(100% - 200px);
         overflow: auto;
         background: #ecf0f1;
+        padding: 15px 15px;
+    }
+    
+    .boder_form_toash {
+        border: 2px solid #27ae60;
+        border-radius: 5px;
+        padding: 15px 30px;
+    }
+    
+    .part_form_toash {
+        border-top: 5px solid #27ae60;
+        margin-top: 5px;
+        padding: 5px 0;
+    }
+    
+    .title_form_toash {
+        position: relative;
+    }
+    
+    .title_form_toash img {
+        width: 150px;
+        height: 100px;
+    }
+    
+    .title_form_toash h3 {
+        color: #3498db;
+        display: inline;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-left: 30px;
+    }
+    
+    .content_form_toash {
+        margin: 5px 0;
+        border-top: 2px solid #27ae60;
+        height: 100px;
+        text-decoration: none;
+        background: none;
+        padding: 5px 0;
+    }
+    
+    .content_form_toash a {
+        color: black;
+    }
+    
+    .content_form_toash a:hover {
+        transition: .5s;
+        color: #3498db;
     }
     
     .footer_form_appear {

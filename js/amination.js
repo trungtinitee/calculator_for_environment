@@ -1,3 +1,4 @@
+//lock body scroll when tab right opened
 var checked = false;
 
 function ChangeOverFlowBody() {
@@ -10,6 +11,7 @@ function ChangeOverFlowBody() {
     }
 }
 
+//appear form
 function AppearBackgroundAndForm() {
     document.getElementById("background_form_appear_id").style.opacity = 0.7;
     document.getElementById("background_form_appear_id").style.visibility = "visible";
@@ -17,7 +19,7 @@ function AppearBackgroundAndForm() {
     document.getElementById("form_appear_id").style.visibility = "visible";
     document.getElementsByTagName("body")[0].style.overflow = "hidden";
 }
-
+// close form
 function HiddenForm() {
     document.getElementById("background_form_appear_id").style.opacity = 0;
     document.getElementById("background_form_appear_id").style.visibility = "hidden";
