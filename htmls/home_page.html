@@ -11,7 +11,7 @@
 
 <body>
     <nav>
-        <input type="checkbox" id="check">
+        <input type="checkbox" id="check" onclick="ChangeOverFlowBody()">
         <label for="check" class="checkbtn">
             <i class="fas fa-bars"></i>
         </label>
@@ -50,9 +50,8 @@
                 <h1>Solid treatment</h1>
             </div>
         </div>
-
-        <div id="background_form_appear_id" onclick="HiddenForm()"></div>
-        <div id="form_appear_id">
+        <div id="background_form_appear_id" onclick="HiddenForm()" class="background_form_appear_in"></div>
+        <div id="form_appear_id" class="form_appear_in">
 
         </div>
     </main>
@@ -93,31 +92,6 @@
         </div>
     </footer>
     <script src="../js/amination.js"></script>
-    <script>
-        document.getElementById("check").addEventListener("click", ChangeOverFlowBody);
-        var checked = false;
-
-        function ChangeOverFlowBody() {
-            if (checked === false) {
-                document.getElementsByTagName("body")[0].style.overflow = "hidden";
-                checked = true;
-            } else {
-                document.getElementsByTagName("body")[0].style.overflow = "auto";
-                checked = false;
-            }
-        }
-
-        function AppearBackgroundAndForm() {
-            document.getElementById("background_form_appear_id").setAttribute("class", "background_form_appear_in");
-            document.getElementById("form_appear_id").setAttribute("class", "form_appear_in");
-        }
-
-        function HiddenForm() {
-            document.getElementById("background_form_appear_id").removeAttribute("class");
-            document.getElementById("form_appear_id").removeAttribute("class");
-        }
-    </script>
 </body>
-
 
 </html>

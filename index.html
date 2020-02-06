@@ -6,40 +6,64 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
     <link rel="stylesheet" href="./css/login.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 
 <body>
     <form class="mid_box" action="" method="" id="formLogin">
         <img src="./images/ecology.png" alt="logo_login">
         <h1>Login</h1>
-        <input type="text" name="" placeholder="Username" id="inputUserName">
-        <input type="password" name="" placeholder="Password" id="inputPassword">
+        <input type="text" name="" placeholder="Username" id="inputUserName" required>
+        <input type="password" name="" placeholder="Password" id="inputPassword" required>
         <label class="container">Show/Hide
             <input type="checkbox" onclick="Show_hide_password()">
             <span class="checkmark"></span>
         </label>
-        <input type="submit" name="" value="Let's go!" onclick="checkUsernamePassword()">
+        <div class="submit_btn" onclick="checkUsernamePassword()">Let's go!</div>
     </form>
-</body>
-<script>
-    function Show_hide_password() {
-        var x = document.getElementById("inputPassword");
-        if (x.type === "password") {
-            x.type = "text";
-        } else {
-            x.type = "password";
-        }
-    }
+    <div class="form_toash">
+        <div class="close_login">
+            <p>Username or Password was wrong!</p>
+            <i class="far fa-times-circle"></i>
+        </div>
+        <div class="success_login">
+            <p>Success, Let's start!</p>
+            <i class="far fa-check-circle"></i>
+        </div>
+    </div>
 
-    function checkUsernamePassword() {
-        var userName = document.getElementById("inputUserName").value;
-        var password = document.getElementById("inputPassword").value;
-        if (userName === "tin" && password === "tin") {
-            document.getElementById("formLogin").action = "./htmls/home_page.html"
-        } else {
-            alert("Username or password is not correct!")
+
+    <script>
+        function Show_hide_password() {
+            var x = document.getElementById("inputPassword");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
         }
-    }
-</script>
+
+        function checkUsernamePassword() {
+            var userName = document.getElementById("inputUserName").value;
+            var password = document.getElementById("inputPassword").value;
+            if (userName === "tin" && password === "tin") {
+                document.getElementsByClassName("close_login")[0].style.display = "none";
+                document.getElementsByClassName("form_toash")[0].setAttribute("id", "form_toash_show");
+                setTimeout(function() {
+                    document.getElementById("formLogin").action = "./htmls/home_page.html";
+                    document.getElementById("formLogin").submit();
+                }, 1500);
+            } else {
+                document.getElementsByClassName("success_login")[0].style.display = "none";
+                setTimeout(function() {
+                    document.getElementsByClassName("form_toash")[0].removeAttribute("id");
+                    document.getElementsByClassName("success_login")[0].style.display = "block";
+                }, 1400);
+                document.getElementsByClassName("form_toash")[0].setAttribute("id", "form_toash_show_out");
+
+            }
+        }
+    </script>
+</body>
 
 </html>

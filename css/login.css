@@ -7,6 +7,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    overflow: hidden;
 }
 
 .mid_box {
@@ -59,25 +60,100 @@ body {
     color: #bdc3c7;
 }
 
-.mid_box input[type="submit"] {
-    border: 0;
+.submit_btn {
     background: none;
     display: block;
+    width: 80px;
     margin: 20px auto;
     text-align: center;
     border: 2px solid #2ecc71;
     padding: 14px 40px;
     outline: none;
     color: white;
-    border-radius: 10px;
-    transition: 0.25s;
+    border-radius: 5px;
+    transition: 0.5s;
     cursor: pointer;
     font-family: sans-serif;
+    font-size: 1em;
     text-transform: uppercase;
 }
 
-.mid_box input[type="submit"]:hover {
+.submit_btn:hover {
     background: #2ecc71;
+}
+
+
+/*
+ Make a popup when login
+*/
+
+.form_toash {
+    background: #ecf0f1;
+    display: block;
+    width: 350px;
+    height: 250px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 30px;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 100;
+}
+
+#form_toash_show {
+    animation: appearFormToash .5s;
+    opacity: 1;
+    visibility: visible;
+}
+
+@keyframes appearFormToash {
+    from {
+        top: 0%;
+        opacity: 0;
+    }
+    to {
+        top: 50%;
+        opacity: 1;
+    }
+}
+
+#form_toash_show_out {
+    visibility: visible;
+    opacity: 1;
+    animation: appearFormToash .5s, appearFormToash_out .5s 1s;
+}
+
+@keyframes appearFormToash_out {
+    from {
+        top: 50%;
+        opacity: 1;
+    }
+    to {
+        top: 0%;
+        opacity: 0;
+    }
+}
+
+.close_login {
+    color: red;
+}
+
+.close_login i {
+    font-size: 80px;
+}
+
+.success_login {
+    color: #2ecc71;
+}
+
+.success_login i {
+    font-size: 80px;
+    margin-top: 25px;
 }
 
 
