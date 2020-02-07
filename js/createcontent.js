@@ -53,7 +53,7 @@ function HiddenTitleToash() {
 
 function RemovePartToash() {
     var getQuantityofPart = document.getElementsByClassName("part_form_toash");
-    console.log(getQuantityofPart.length);
+    //console.log(getQuantityofPart.length);
     while (getQuantityofPart.length > 4) {
         var indexRemove = getQuantityofPart.length - 1;
         getQuantityofPart[indexRemove].remove();
@@ -126,7 +126,7 @@ document.getElementById("id_item_water").addEventListener("click", function() {
     CreateContent("#", "<b>Coming soon...<b>", "documents_textbook");
 
     // Công cụ tính toán thời gian thực
-    CreateContent("#", "<b>Coming soon...<b>", "calculator_treatment");
+    CreateContent("../htmls/song_chan_rac.html", "<b>Tính toán song chắn rác xử lí nước thải<b>", "calculator_treatment");
 
     // Others
     CreateContent("#", "<b>Coming soon...<b>", "other_content");

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home page</title>
+    <title>Song chắn rác</title>
     <link rel="stylesheet" href="../css/home_page.css">
     <link rel="stylesheet" href="../css/calculator_tools.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -20,14 +20,14 @@
         <label for="logo_img" class="logo">ETS 4.0</label>
         <span class="subTitle">Environment treatment solution 4.0</span>
         <ul>
-            <li><a class="active" href="./home_page.html">Home</a></li>
-            <li><a href="../htmls/calculator_tools.html">Services</a></li>
+            <li><a href="./home_page.html">Home</a></li>
+            <li><a href="#">Services</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Contact</a></li>
             <li>
-                <a href="../index.html" id="logout">
-                    <span>G.Bye</span>
-                    <i class="fas fa-sign-out-alt"></i>
+                <a class="active" href="" id="logout" onclick="window.close();" style="background: #c0392b;">
+                    <span>Close</span>
+                    <i class="far fa-times-circle"></i>
                 </a>
             </li>
         </ul>
@@ -89,7 +89,9 @@
             </div>
         </div>
     </footer>
+    <input type="text" value="songChanRac" style="display: none;" id="check_load_form">
     <script src="../js/real_time_calculator.js"></script>
+    <script src="../js/amination.js"></script>
 </body>
 
 </html>
