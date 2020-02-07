@@ -183,7 +183,7 @@
     }
     
     .items-container h1 {
-        font-size: 50px;
+        font-size: 40px;
         text-transform: uppercase;
         color: white;
         text-align: center;
@@ -210,6 +210,12 @@
         }
         .items:hover h1 {
             font-size: 50px;
+        }
+    }
+    
+    @media (max-width: 700px) {
+        .items h1 {
+            font-size: 25px;
         }
     }
     /*
@@ -290,36 +296,39 @@
         border: 2px solid #27ae60;
         border-radius: 5px;
         padding: 15px 30px;
+        min-height: 100%;
     }
     
     .part_form_toash {
-        border-top: 5px solid #27ae60;
+        border-top: 10px solid #27ae60;
         margin-top: 5px;
         padding: 5px 0;
     }
     
     .title_form_toash {
         position: relative;
+        min-height: 100px;
     }
     
     .title_form_toash img {
         width: 150px;
         height: 100px;
+        border-radius: 5px;
     }
     
     .title_form_toash h3 {
         color: #3498db;
-        display: inline;
+        display: inline-block;
         position: absolute;
+        margin-left: 30px;
         top: 50%;
         transform: translateY(-50%);
-        margin-left: 30px;
     }
     
     .content_form_toash {
         margin: 5px 0;
         border-top: 2px solid #27ae60;
-        height: 100px;
+        min-height: 50px;
         text-decoration: none;
         background: none;
         padding: 5px 0;
