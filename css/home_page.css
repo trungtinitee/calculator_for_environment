@@ -147,7 +147,7 @@
         min-height: 100vh;
         background-image: url(../images/background_login.jpg);
         background-repeat: no-repeat;
-        background-position: top center;
+        background-position: center;
         background-size: cover;
     }
     
@@ -192,7 +192,7 @@
     
     .items:hover h1 {
         position: absolute;
-        font-size: 80px;
+        font-size: 70px;
         transition: .5s;
         color: #1e3799;
         top: 50%;

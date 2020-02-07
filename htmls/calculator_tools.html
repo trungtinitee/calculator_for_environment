@@ -1,0 +1,95 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home page</title>
+    <link rel="stylesheet" href="../css/home_page.css">
+    <link rel="stylesheet" href="../css/calculator_tools.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body>
+    <nav>
+        <input type="checkbox" id="check" onclick="ChangeOverFlowBody()">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <img src="../images/ecology.png" alt="logo" class="logo_img" id="logo_img">
+        <label for="logo_img" class="logo">ETS 4.0</label>
+        <span class="subTitle">Environment treatment solution 4.0</span>
+        <ul>
+            <li><a class="active" href="./home_page.html">Home</a></li>
+            <li><a href="../htmls/calculator_tools.html">Services</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li>
+                <a href="../index.html" id="logout">
+                    <span>G.Bye</span>
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <section class="body_container">
+        <div class="border_container">
+            <div class="change_area">
+                <div class="title_change_area">
+                    <h1>Nhập giá trị đầu vào</h1>
+                </div>
+                <div class="change_content" id="change_content_id">
+
+                </div>
+
+            </div>
+            <div class="result_area">
+                <div class="title_result_area">
+                    <h1>Kết quả</h1>
+                </div>
+                <div class="result_content" id="result_content_id">
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer_container">
+            <div class="left_col">
+                <div>
+                    <img src="../images/ecology.png" alt="logo">
+                    <h1>ETS 4.0</h1>
+                </div>
+                <div class="social">
+                    <a href="#">
+                        <i class="fas fa-phone-square-alt"></i>
+                        <p>Phone 0334919392</p>
+                    </a>
+                    <a href="https://www.facebook.com/lutrungtin">
+                        <i class="fab fa-facebook-square"></i>
+                        <p>Facebook Trung Tín</p>
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-envelope-square"></i>
+                        <p>Gmail trungtinitee1999@gmail.com</p>
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-comments"></i>
+                        <p>Zalo 0334919392</p>
+                    </a>
+                </div>
+                <p class="right_text">© 2020 Created By Trung Tin All Rights Reserved.</p>
+            </div>
+            <div class="right_col">
+                <h1>Environment treatment solution 4.0</h1>
+                <div class="under_line"></div>
+                <p><b>Major:</b></p>
+                <p><i class="fas fa-hand-rock"></i>Environmental engineering - Can Tho University</p>
+                <p><i class="fas fa-hand-rock"></i>Web Developer - Self Learning</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/real_time_calculator.js"></script>
+</body>
+
+</html>
