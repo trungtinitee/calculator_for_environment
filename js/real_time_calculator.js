@@ -32,6 +32,7 @@ function AddInputField(idInputField, placeHolder) {
     createInputTag.setAttribute("id", idInputField);
     createInputTag.setAttribute("placeholder", placeHolder);
     createInputTag.setAttribute("class", "format_input");
+    createInputTag.setAttribute("value", "");
 
     var createNewDivTag = document.createElement("div");
     createNewDivTag.setAttribute("class", "background_items");
@@ -66,7 +67,7 @@ function AddPlusRowField(textInput, idBtnPlusAddRow, idBtnMinusRow, idPlusRowFie
     createInputTag.setAttribute("class", "format_input");
     createInputTag.setAttribute("id", idPlusRowField + "0");
     createInputTag.setAttribute("placeholder", "Row. 0");
-    createInputTag.setAttribute("type", "text");
+    createInputTag.setAttribute("value", "");
 
     var createBackInputTag = document.createElement("div");
     createBackInputTag.setAttribute("class", "background_items");
@@ -86,6 +87,8 @@ function EventClickPlusBtn(idParentAppendChild, varIndex) {
     createInputTag.setAttribute("id", idParentAppendChild + varIndex);
     createInputTag.setAttribute("placeholder", "Row. " + varIndex);
     //createInputTag.setAttribute("type", "text");
+    createInputTag.setAttribute("value", "");
+
     var createBackInputTag = document.createElement("div");
     createBackInputTag.setAttribute("class", "background_items");
     createBackInputTag.appendChild(createInputTag);
