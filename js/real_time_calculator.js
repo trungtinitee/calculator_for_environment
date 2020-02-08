@@ -1,7 +1,14 @@
 /***************************** FUNCTION MAIN ************************/
 /****************************************************************** */
 /************ Varible First call********************* */
+
+//MPN calculator
 var indexTheTich = 1;
+var indexOngDuongTinh = 1;
+var indexOngAmTinh = 1;
+
+
+
 
 /*********** create element in website***** ***********/
 /**************************************************** */
@@ -21,6 +28,7 @@ function AddTextLable(textInput, idTextField) {
 
 function AddInputField(idInputField, placeHolder) {
     var createInputTag = document.createElement("input");
+    //createInputTag.setAttribute("type", "text");
     createInputTag.setAttribute("id", idInputField);
     createInputTag.setAttribute("placeholder", placeHolder);
     createInputTag.setAttribute("class", "format_input");
@@ -58,6 +66,8 @@ function AddPlusRowField(textInput, idBtnPlusAddRow, idBtnMinusRow, idPlusRowFie
     createInputTag.setAttribute("class", "format_input");
     createInputTag.setAttribute("id", idPlusRowField + "0");
     createInputTag.setAttribute("placeholder", "Row. 0");
+    createInputTag.setAttribute("type", "text");
+
     var createBackInputTag = document.createElement("div");
     createBackInputTag.setAttribute("class", "background_items");
     createBackInputTag.appendChild(createInputTag); // create first input
@@ -75,6 +85,7 @@ function EventClickPlusBtn(idParentAppendChild, varIndex) {
     createInputTag.setAttribute("class", "format_input");
     createInputTag.setAttribute("id", idParentAppendChild + varIndex);
     createInputTag.setAttribute("placeholder", "Row. " + varIndex);
+    //createInputTag.setAttribute("type", "text");
     var createBackInputTag = document.createElement("div");
     createBackInputTag.setAttribute("class", "background_items");
     createBackInputTag.appendChild(createInputTag);
@@ -104,17 +115,47 @@ function ShowResultInForm(textInput, idTextField) {
 
 } // show results calculation in form
 
-
+function SumAllID(idFieldNeedToSum, numberFieldNeedToSum) {
+    var sum = 0;
+    for (i = 0; i < numberFieldNeedToSum; i++) {
+        sum = sum + (document.getElementById(idFieldNeedToSum + i).value * 1.0);
+    }
+    return sum;
+}
 /*********** Function formular***** ***********/
 /******************************************** */
 
+function MPNThomas(soOngDuongTinh, theTichOngAmTinh, tongTheTichMau) {
+    return (soOngDuongTinh * 100) / (Math.sqrt(theTichOngAmTinh * tongTheTichMau));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/****************************************Render form when load********************* */
+/************************************************************************************ */
 function DienTichHCN() {
-    /****************************************Render form when load********************* */
-    /************************************************************************************ */
+
 
     AddTextLable("<b>Tính toán song chắn rác</b>", "titleCalculation");
     document.getElementById("titleCalculation").style.color = "#27ae60";
     document.getElementById("titleCalculation").style.fontSize = "25px";
+
     AddTextLable("Nhập chiều rộng", "");
     AddInputField("chieu_dai_id", "");
 
@@ -148,10 +189,122 @@ function DienTichHCN() {
     });
 }
 
+function MPNCalculalor() {
+    //function
+    function CallThisWhenChangeValue() {
+        var soOngDuongTinh = SumAllID("ong_duong_tinh_id", indexOngDuongTinh);
+        var theTichMauTrongOAmTinh = 0;
+        var theTichMauTrongTatCa = 0;
+        var result = 0;
+
+        // Thể tích mẫu trong ống âm tính
+        for (i = 0; i < indexOngAmTinh; i++) {
+            var soOng = document.getElementById("ong_am_tinh_id" + i).value * 1.0;
+
+            var theTich = document.getElementById("the_tich_mau_id" + i).value * 1.0;
+
+            theTichMauTrongOAmTinh = theTichMauTrongOAmTinh + (soOng * theTich);
+        }
+
+        //Thể tích mẫu trong tất cả các ống
+        for (i = 0; i < indexTheTich; i++) {
+            var soOngDuong = document.getElementById("ong_duong_tinh_id" + i).value * 1.0;
+
+            var soOngAm = document.getElementById("ong_am_tinh_id" + i).value * 1.0;
+
+            var theTich = document.getElementById("the_tich_mau_id" + i).value * 1.0;
+
+            theTichMauTrongTatCa = theTichMauTrongTatCa + ((soOngDuong + soOngAm) * theTich);
+        }
+        result = MPNThomas(soOngDuongTinh, theTichMauTrongOAmTinh, theTichMauTrongTatCa) + "";
+        //console.log(soOngDuongTinh, theTichMauTrongOAmTinh, theTichMauTrongTatCa);
+        if (result.indexOf(".", 0) !== -1) {
+            document.getElementById("mpn_result_id").innerHTML = "Kết quả MPN: <b>" + result + "</b>";
+        }
+    }
+
+
+
+    //create title
+    AddTextLable("<b>Công thức Thomas tính thông số MPN</b>", "titleCalculation");
+    document.getElementById("titleCalculation").style.color = "#27ae60";
+    document.getElementById("titleCalculation").style.fontSize = "25px";
+
+    //create Thể tich mẫu
+    AddPlusRowField("Thể tích mẫu (mL)", "the_tich_mau_btn_plus_id", "the_tich_mau_btn_minus_id", "the_tich_mau_id");
+    AddPlusRowField("Ống dương tính (ống)", "ong_duong_tinh_btn_plus_id", "ong_duong_tinh_btn_minus_id", "ong_duong_tinh_id");
+    AddPlusRowField("Ống âm tính (ống)", "ong_am_tinh_btn_plus_id", "ong_am_tinh_btn_minus_id", "ong_am_tinh_id");
+
+    //show results
+    ShowResultInForm("Kết quả MPN: ", "mpn_result_id"); //show results
+
+    //catch event....
+    //Event Thể tích mẫu
+    document.getElementById("the_tich_mau_btn_plus_id").addEventListener("click", function() {
+        EventClickPlusBtn("the_tich_mau_id", indexTheTich);
+        document.getElementById("the_tich_mau_id" + indexTheTich).addEventListener("keyup", function() {
+            CallThisWhenChangeValue();
+        })
+        indexTheTich++;
+
+    });
+
+    document.getElementById("the_tich_mau_id" + 0).addEventListener("keyup", function() {
+        CallThisWhenChangeValue();
+    })
+
+    document.getElementById("the_tich_mau_btn_minus_id").addEventListener("click", function() {
+        EventClickMinusBtn("the_tich_mau_id", indexTheTich);
+        if (indexTheTich >>> 1) { indexTheTich--; }
+
+    });
+
+    //Event Ống dương tính
+    document.getElementById("ong_duong_tinh_btn_plus_id").addEventListener("click", function() {
+        EventClickPlusBtn("ong_duong_tinh_id", indexOngDuongTinh);
+        document.getElementById("ong_duong_tinh_id" + indexOngDuongTinh).addEventListener("keyup", function() {
+            CallThisWhenChangeValue();
+        });
+        indexOngDuongTinh++;
+
+    });
+
+    document.getElementById("ong_duong_tinh_id" + 0).addEventListener("keyup", function() {
+        CallThisWhenChangeValue();
+    });
+
+    document.getElementById("ong_duong_tinh_btn_minus_id").addEventListener("click", function() {
+        EventClickMinusBtn("ong_duong_tinh_id", indexOngDuongTinh);
+        if (indexOngDuongTinh >>> 1) { indexOngDuongTinh--; }
+
+    });
+
+    //Event Ống âm tính
+    document.getElementById("ong_am_tinh_btn_plus_id").addEventListener("click", function() {
+        EventClickPlusBtn("ong_am_tinh_id", indexOngAmTinh);
+        document.getElementById("ong_am_tinh_id" + indexOngAmTinh).addEventListener("keyup", function() {
+            CallThisWhenChangeValue();
+        });
+        indexOngAmTinh++;
+
+    });
+
+    document.getElementById("ong_am_tinh_id" + 0).addEventListener("keyup", function() {
+        CallThisWhenChangeValue();
+    });
+
+    document.getElementById("ong_am_tinh_btn_minus_id").addEventListener("click", function() {
+        EventClickMinusBtn("ong_am_tinh_id", indexOngAmTinh);
+        if (indexOngAmTinh >>> 1) { indexOngAmTinh--; }
+
+    });
+
+
+}
 /******************************DEFAULT FORM LOAD******************** */
 /******************************************************************** */
 
 // Tính toán song chắn rác
-if (sessionStorage.getItem("checkLoadFormValue") === "songChanRac") {
-    DienTichHCN();
+if (sessionStorage.getItem("checkLoadFormValue") === "mpn") {
+    MPNCalculalor();
 }
