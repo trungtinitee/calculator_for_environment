@@ -92,3 +92,23 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.btnClickAddRow {
+    font-size: 30px;
+    margin-left: 10px;
+    color: #27ae60;
+}
+
+.btnClickAddRow i:hover {
+    transform: scale(1.2);
+}
+
+.btnClickMinusRow {
+    font-size: 30px;
+    margin-left: 10px;
+    color: #c0392b;
+}
+
+.btnClickMinusRow i:hover {
+    transform: scale(1.2);
+}

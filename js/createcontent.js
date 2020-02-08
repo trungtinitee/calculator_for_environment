@@ -18,13 +18,14 @@ function CreatPart(idPart, textInput) {
 
 
 
-function CreateContent(link, textInput, idParent) {
+function CreateContent(link, textInput, idParent, idContent) {
     var createDivTag = document.createElement("div");
     createDivTag.setAttribute("class", "content_form_toash");
 
     var createATag = document.createElement("a");
     createATag.setAttribute("href", link);
     createATag.setAttribute("target", "_blank");
+    createATag.setAttribute("id", idContent);
 
     var createPTag = document.createElement("p");
     createPTag.innerHTML = textInput; // create many tag
@@ -68,6 +69,14 @@ function ShowTitleToash() {
     }
 } // show title again when close form toash
 
+function AddValuetoLocalStorage(valueAdd) {
+    if (typeof(Storage) !== "undefined") {
+        // add value to Store
+        sessionStorage.setItem("checkLoadFormValue", valueAdd);
+    } else {
+        console.log("Important, can't not support Storage!!!!!!");
+    }
+}
 /* ******************* Default Loaded when open************************/
 /******************************************************************** */
 // run with some event
@@ -119,6 +128,7 @@ document.getElementById("id_item_soil").addEventListener("click", function() {
 
 // Code for Water item
 document.getElementById("id_item_water").addEventListener("click", function() {
+
     // Tieu chuan, quy chuan viet nam
     CreateContent("#", "<b>Coming soon...<b>", "tc_qc_vn");
 
@@ -126,11 +136,10 @@ document.getElementById("id_item_water").addEventListener("click", function() {
     CreateContent("#", "<b>Coming soon...<b>", "documents_textbook");
 
     // Công cụ tính toán thời gian thực
-    CreateContent("../htmls/song_chan_rac.html", "<b>Tính toán song chắn rác xử lí nước thải<b>", "calculator_treatment");
-
+    CreateContent("../htmls/calculator.html", "<b>Tính toán song chắn rác xử lí nước thải<b>", "calculator_treatment", "songChanRac_id");
+    document.getElementById("songChanRac_id").addEventListener("click", AddValuetoLocalStorage("songChanRac"));
     // Others
     CreateContent("#", "<b>Coming soon...<b>", "other_content");
-
 })
 
 // Code for Soild item
