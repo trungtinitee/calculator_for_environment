@@ -307,7 +307,9 @@ function MPNCalculalor() {
 /******************************DEFAULT FORM LOAD******************** */
 /******************************************************************** */
 
-// Tính toán song chắn rác
+// Tính toán chỉ số MPN sau quá trình phân tích
 if (sessionStorage.getItem("checkLoadFormValue") === "mpn") {
     MPNCalculalor();
 }
+
+//
