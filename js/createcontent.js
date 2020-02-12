@@ -69,7 +69,7 @@ function ShowTitleToash() {
     }
 } // show title again when close form toash
 
-function AddValuetoLocalStorage(valueAdd) {
+function AddValuetoSessionStorage(valueAdd) {
     if (typeof(Storage) !== "undefined") {
         // add value to Store
         sessionStorage.setItem("checkLoadFormValue", valueAdd);
@@ -137,10 +137,14 @@ document.getElementById("id_item_water").addEventListener("click", function() {
 
     // Công cụ tính toán thời gian thực
     CreateContent("../htmls/calculator.html", "<b>Tính toán song chắn rác xử lí nước thải<b>", "calculator_treatment", "songChanRac_id");
-    document.getElementById("songChanRac_id").addEventListener("click", AddValuetoLocalStorage("songChanRac")); //Song chắn rác
+    document.getElementById("songChanRac_id").addEventListener("click", function() {
+        AddValuetoSessionStorage("songChanRac");
+    }); //Song chắn rác
 
     CreateContent("../htmls/calculator.html", "Tính toán MPN sau quá trình nuôi cấy", "calculator_treatment", "mpn_id");
-    document.getElementById("mpn_id").addEventListener("click", AddValuetoLocalStorage("mpn")); //Tính MPN
+    document.getElementById("mpn_id").addEventListener("click", function() {
+        AddValuetoSessionStorage("mpn");
+    }); //Tính MPN
 
     // Others
     CreateContent("#", "<b>Coming soon...<b>", "other_content");

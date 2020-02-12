@@ -312,4 +312,9 @@ if (sessionStorage.getItem("checkLoadFormValue") === "mpn") {
     MPNCalculalor();
 }
 
+if (sessionStorage.getItem("checkLoadFormValue") === "songChanRac") {
+    DienTichHCN();
+}
+console.log("aaaaaa", sessionStorage.getItem("checkLoadFormValue"));
+
 //
