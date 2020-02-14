@@ -26,6 +26,20 @@ function AddTextLable(textInput, idTextField) {
     document.getElementById("change_content_id").appendChild(createNewDivTag);
 } //add text for form
 
+function AddTextLableHasIdAppend(textInput, idTextField, classAppendChild) {
+    var createNewPTag = document.createElement("h3");
+    createNewPTag.innerHTML = textInput;
+    createNewPTag.setAttribute("id", idTextField);
+    createNewPTag.setAttribute("class", "format_text");
+
+    var createNewDivTag = document.createElement("div");
+    createNewDivTag.setAttribute("class", "background_items");
+
+    //append child just create
+    createNewDivTag.appendChild(createNewPTag);
+    document.getElementById(classAppendChild).appendChild(createNewDivTag);
+} //add text for form has specify class add
+
 function AddInputField(idInputField, placeHolder) {
     var createInputTag = document.createElement("input");
     //createInputTag.setAttribute("type", "text");
@@ -41,6 +55,46 @@ function AddInputField(idInputField, placeHolder) {
     createNewDivTag.appendChild(createInputTag);
     document.getElementById("change_content_id").appendChild(createNewDivTag);
 } //add new input field
+
+function AddInputFieldHasIdAppend(idInputField, placeHolder, idAppendChild, valueDefault) {
+    var createInputTag = document.createElement("input");
+    //createInputTag.setAttribute("type", "text");
+    createInputTag.setAttribute("id", idInputField);
+    createInputTag.setAttribute("placeholder", placeHolder);
+    createInputTag.setAttribute("class", "format_input");
+    createInputTag.setAttribute("value", valueDefault);
+
+    var createNewDivTag = document.createElement("div");
+    createNewDivTag.setAttribute("class", "background_items");
+
+    //append child just create
+    createNewDivTag.appendChild(createInputTag);
+    document.getElementById(idAppendChild).appendChild(createNewDivTag);
+} //add new input field has specidy class add
+
+function AddRadioField(nameRadio, idRadio, textInput, idClassRadio) {
+    var createRadioTag = document.createElement("input");
+    createRadioTag.setAttribute("type", "radio");
+    createRadioTag.setAttribute("name", nameRadio);
+    createRadioTag.setAttribute("id", idRadio);
+
+    var createLabelTag = document.createElement("label");
+    createLabelTag.setAttribute("class", "container_radio");
+    createLabelTag.innerHTML = textInput;
+
+    var createSpanTag = document.createElement("span");
+    createSpanTag.setAttribute("class", "checkmark_radio")
+
+    var createNewDivTag = document.createElement("div");
+    createNewDivTag.setAttribute("id", idClassRadio);
+    createNewDivTag.setAttribute("class", "background_items"); // add background for radio
+
+    //append child just create
+    createLabelTag.appendChild(createRadioTag);
+    createLabelTag.appendChild(createSpanTag);
+    createNewDivTag.appendChild(createLabelTag);
+    document.getElementById("change_content_id").appendChild(createNewDivTag);
+}
 
 function AddPlusRowField(textInput, idBtnPlusAddRow, idBtnMinusRow, idPlusRowField) {
     var createNewDivTag = document.createElement("div");
@@ -102,6 +156,9 @@ function EventClickMinusBtn(idParentAppendChild, currentIndex) {
     }
 }
 
+function AddDetailGuide(textInput) {
+    return "</br> <i class = \"class_detail\">" + textInput + "</i>";
+}
 
 function ShowResultInForm(textInput, idTextField) {
     var createNewPTag = document.createElement("h3");
@@ -131,23 +188,6 @@ function SumAllID(idFieldNeedToSum, numberFieldNeedToSum) {
 function MPNThomas(soOngDuongTinh, theTichOngAmTinh, tongTheTichMau) {
     return (soOngDuongTinh * 100) / (Math.sqrt(theTichOngAmTinh * tongTheTichMau));
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /****************************************Render form when load********************* */
@@ -301,7 +341,108 @@ function MPNCalculalor() {
         if (indexOngAmTinh >>> 1) { indexOngAmTinh--; }
 
     });
+}
 
+function XuLiNuocThai() {
+    // varibale global
+    var luuLuongInput = 0;
+
+    //function
+    function TinhLuuLuongDauVao(check) {
+        if (check === 0) {
+            var resultLuuLuong = document.getElementById("q_id_text_input").value;
+            luuLuongInput = resultLuuLuong;
+            document.getElementById("luu_luong_vao_result_id").innerHTML = "Lưu lượng đầu vào: <b>" + resultLuuLuong + " (m<sup>3</sup>/ngày.đêm)</b>";
+        }
+        if (check === 1) {
+            var getQBinhQuanNguoi = document.getElementById("luu_luong_nguoi_id").value * 1.0;
+            var getPhanTramNguoi = document.getElementById("phan_tram_thai_id").value * 1.0;
+            var getSoNguoi = document.getElementById("so_luong_nguoi_id").value * 1.0;
+            var resultLuuLuong = getQBinhQuanNguoi * (getPhanTramNguoi / 100) * getSoNguoi;
+            luuLuongInput = resultLuuLuong / 1000;
+            document.getElementById("q_id_text_input").value = resultLuuLuong / 1000;
+            document.getElementById("luu_luong_vao_result_id").innerHTML = "Lưu lượng đầu vào: <b>" + resultLuuLuong / 1000 + " (m<sup>3</sup>/ngày.đêm)</b>";
+        }
+    }
+
+    //create title
+    AddTextLable("<b>Thiết kế hệ thống xử lí nước thải</b>", "titleCalculation");
+    document.getElementById("titleCalculation").style.color = "#27ae60";
+    document.getElementById("titleCalculation").style.fontSize = "25px";
+
+    // Choose one to calculation luu luong nuoc thai
+    AddTextLable("<b>Lưu lượng nước thải sinh hoạt?, (m<sup>3</sup>/ngày.đêm</b>)" + AddDetailGuide("Chọn phương pháp bên dưới"), "");
+    AddRadioField("chooseMethodToCalQ", "qExisted_id_radio", "Đã có sẵn", "existed_id_class");
+    AddRadioField("chooseMethodToCalQ", "qNeedToCal_id_radio", "Cần tính toán", "qneedtocal_id_class");
+
+    // Get method choosed??
+    document.getElementById("qExisted_id_radio").addEventListener("change", function() {
+        //delete all field before render
+        var temp = document.getElementById("q_id_text_input");
+        if (temp !== null) {
+            document.getElementById("qneedtocal_id_class").removeChild(document.getElementById("qneedtocal_id_class").lastChild);
+            document.getElementById("qneedtocal_id_class").removeChild(document.getElementById("qneedtocal_id_class").lastChild);
+        }
+        var temp = document.getElementById("so_luong_nguoi_id");
+        if (temp !== null) {
+            document.getElementById("qneedtocal_id_class").removeChild(document.getElementById("qneedtocal_id_class").lastChild);
+            document.getElementById("qneedtocal_id_class").removeChild(document.getElementById("qneedtocal_id_class").lastChild);
+        }
+        var temp = document.getElementById("phan_tram_thai_id");
+        if (temp !== null) {
+            document.getElementById("qneedtocal_id_class").removeChild(document.getElementById("qneedtocal_id_class").lastChild);
+            document.getElementById("qneedtocal_id_class").removeChild(document.getElementById("qneedtocal_id_class").lastChild);
+        }
+        var temp = document.getElementById("luu_luong_nguoi_id");
+        if (temp !== null) {
+            document.getElementById("qneedtocal_id_class").removeChild(document.getElementById("qneedtocal_id_class").lastChild);
+            document.getElementById("qneedtocal_id_class").removeChild(document.getElementById("qneedtocal_id_class").lastChild);
+        }
+        //add new field
+        AddInputFieldHasIdAppend("q_id_text_input", "", "existed_id_class", "");
+
+        //create event upkey
+        document.getElementById("q_id_text_input").addEventListener("keyup", function() {
+            TinhLuuLuongDauVao(0);
+        });
+    }); // for existed
+    document.getElementById("qNeedToCal_id_radio").addEventListener("change", function() {
+        //delete all field before render
+        var checkQInput = document.getElementById("q_id_text_input");
+        if (checkQInput !== null) {
+            document.getElementById("existed_id_class").removeChild(document.getElementById("existed_id_class").lastChild);
+        }
+        //add new field
+        AddTextLableHasIdAppend("Lưu lượng bình quân trên đầu người <b>(lít/người, lít/ngày.đêm)</b>" + AddDetailGuide("40, 80, 120 (lít/ngày.đêm)"), "", "qneedtocal_id_class");
+        AddInputFieldHasIdAppend("luu_luong_nguoi_id", "", "qneedtocal_id_class", "40");
+        AddTextLableHasIdAppend("Phần trăm lượng nước thải từ lượng tiêu thụ trên đầu người <b>(%)</b>" + AddDetailGuide("90, 100 (%)"), "", "qneedtocal_id_class");
+        AddInputFieldHasIdAppend("phan_tram_thai_id", "", "qneedtocal_id_class", "100");
+        AddTextLableHasIdAppend("Số lượng cán bộ, nhân viên, công nhân... <b>(người)</b>", "", "qneedtocal_id_class");
+        AddInputFieldHasIdAppend("so_luong_nguoi_id", "", "qneedtocal_id_class", "0");
+        AddTextLableHasIdAppend("Kết quả lưu lượng <b>Q (m<sup>3</sup>/ngày.đêm)</b>", "", "qneedtocal_id_class");
+        AddInputFieldHasIdAppend("q_id_text_input", "", "qneedtocal_id_class", "");
+
+        // create event up key
+        document.getElementById("luu_luong_nguoi_id").addEventListener("keyup", function() {
+            TinhLuuLuongDauVao(1);
+        });
+        document.getElementById("phan_tram_thai_id").addEventListener("keyup", function() {
+            TinhLuuLuongDauVao(1);
+        });
+        document.getElementById("so_luong_nguoi_id").addEventListener("keyup", function() {
+            TinhLuuLuongDauVao(1);
+        });
+        document.getElementById("q_id_text_input").addEventListener("keyup", function() {
+            TinhLuuLuongDauVao(0);
+        });
+    }); // for calculation
+
+
+
+
+
+    // Create Results
+    ShowResultInForm("Lưu lượng đầu vào: ", "luu_luong_vao_result_id"); //show results
 
 }
 /******************************DEFAULT FORM LOAD******************** */
@@ -312,9 +453,9 @@ if (sessionStorage.getItem("checkLoadFormValue") === "mpn") {
     MPNCalculalor();
 }
 
-if (sessionStorage.getItem("checkLoadFormValue") === "songChanRac") {
-    DienTichHCN();
+if (sessionStorage.getItem("checkLoadFormValue") === "xuLiNuocThai") {
+    XuLiNuocThai();
 }
-console.log("aaaaaa", sessionStorage.getItem("checkLoadFormValue"));
+
 
 //

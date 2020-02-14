@@ -136,9 +136,9 @@ document.getElementById("id_item_water").addEventListener("click", function() {
     CreateContent("#", "<b>Coming soon...<b>", "documents_textbook");
 
     // Công cụ tính toán thời gian thực
-    CreateContent("../htmls/calculator.html", "<b>Tính toán song chắn rác xử lí nước thải<b>", "calculator_treatment", "songChanRac_id");
-    document.getElementById("songChanRac_id").addEventListener("click", function() {
-        AddValuetoSessionStorage("songChanRac");
+    CreateContent("../htmls/calculator.html", "<b>Thiết kế hệ thống xử lí nước thải<b>", "calculator_treatment", "xuLiNuocThai_id");
+    document.getElementById("xuLiNuocThai_id").addEventListener("click", function() {
+        AddValuetoSessionStorage("xuLiNuocThai");
     }); //Song chắn rác
 
     CreateContent("../htmls/calculator.html", "Tính toán MPN sau quá trình nuôi cấy", "calculator_treatment", "mpn_id");
