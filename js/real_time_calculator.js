@@ -371,7 +371,7 @@ function XuLiNuocThai() {
     document.getElementById("titleCalculation").style.fontSize = "25px";
 
     // Choose one to calculation luu luong nuoc thai
-    AddTextLable("<b>Lưu lượng nước thải sinh hoạt?, (m<sup>3</sup>/ngày.đêm</b>)" + AddDetailGuide("Chọn phương pháp bên dưới"), "");
+    AddTextLable("<b>Lưu lượng nước thải sinh hoạt? (m<sup>3</sup>/ngày.đêm</b>)" + AddDetailGuide("Chọn phương pháp bên dưới"), "");
     AddRadioField("chooseMethodToCalQ", "qExisted_id_radio", "Đã có sẵn", "existed_id_class");
     AddRadioField("chooseMethodToCalQ", "qNeedToCal_id_radio", "Cần tính toán", "qneedtocal_id_class");
 
@@ -456,6 +456,3 @@ if (sessionStorage.getItem("checkLoadFormValue") === "mpn") {
 if (sessionStorage.getItem("checkLoadFormValue") === "xuLiNuocThai") {
     XuLiNuocThai();
 }
-
-
-//
